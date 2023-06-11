@@ -299,7 +299,7 @@
                   <div class="col-12">
                     <div style="overflow: hidden;">
                       <div style="float: left;"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="sgstlife" data-color="#40DCA5" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script></div>
-                      <div style="float: right; margin-right:20px; margin-top:-8px"><input type="submit" class="form-control submit-btn py-2 mx-2" value="Send Button"></input></div>
+                      <div style="float: right; margin-right:20px; margin-top:-8px"><input type="submit" class="form-control submit-btn py-2 mx-2" id="send" value="Send Button"></input></div>
                     </div>
                   </div>
                 </div>
@@ -349,14 +349,20 @@
      <script type="text/javascript">
       window.onload = function() {
           document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-              emailjs.sendForm('gmail', 'template_5zw93GCi', this)
+              event.preventDefault();
+              const button = document.querySelector('#send');
+              if (button.disabled === false){
+                emailjs.sendForm('gmail', 'template_5zw93GCi', this)
                   .then(function() {
+                      button.disabled = true;   
+                      button.value="SUCCESS"
                       console.log('SUCCESS!');
                   }, function(error) {
+                      button.value="FAILED TRY AGAIN"
                       console.log('FAILED...', error);
                   });
-                });
+                }
+          });
       }
     </script>
 
