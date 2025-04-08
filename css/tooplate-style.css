@@ -560,10 +560,15 @@ b, strong {
     vertical-align: top;
   }
 }
+/* Base styles for mobile-first approach */
+.linkdemo {
+  width: 100%;
+}
 
 .file-structure {
   display: flex;
-  /* max-width: 900px; */
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
 }
 
@@ -573,10 +578,11 @@ b, strong {
   background: #fff;
   border-radius: 10px;
   padding: 12px 16px;
-  padding-right: 90px !important;
-  margin: 15px;
+  margin: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: background-color 0.2s;
+  cursor: pointer;
+  width: 100%;
 }
 
 .file-item:hover {
@@ -595,4 +601,20 @@ b, strong {
   font-size: 16px;
   color: #333;
   font-weight: 500;
+}
+
+/* Tablet view: 2-column layout */
+@media (min-width: 600px) {
+  .linkdemo {
+    width: 50%;
+  }
+
+}
+
+/* Desktop view: 4-column layout */
+@media (min-width: 900px) {
+  .linkdemo {
+    width: 25%;
+  }
+
 }
